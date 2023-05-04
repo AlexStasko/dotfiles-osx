@@ -1,0 +1,21 @@
+---
+- name: Install
+  homebrew:
+    name: neovim
+    state: latest
+
+- name: Config folder
+  ansible.builtin.file:
+    mode: "0755"
+    path: "{{ ansible_user_dir }}/.config/nvim"
+    state: directory
+
+- name: Copy init.lua
+  ansible.builtin.copy:
+    dest: "{{ ansible_user_dir }}/.config/nvim/init.lua"
+    src: "init.lua"
+
+- name: Copy modules
+  ansible.builtin.copy:
+    dest: "{{ ansible_user_dir }}/.config/nvim/lua"
+    src: "lua/"

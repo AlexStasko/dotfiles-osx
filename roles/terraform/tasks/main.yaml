@@ -1,0 +1,4 @@
+---
+- name: Install
+  homebrew:
+    name: warrensbox/tap/tfswitch

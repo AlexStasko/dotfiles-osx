@@ -1,0 +1,5 @@
+---
+- name: Install
+  homebrew_cask:
+    name: 1password
+    state: latest

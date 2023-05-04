@@ -1,0 +1,10 @@
+Host *
+    ServerAliveInterval 60
+    ForwardAgent yes
+    StrictHostKeyChecking no
+
+{% if ssh_config is defined %}
+{% for key, value in ssh_config.items() %}
+{{ value }}
+{% endfor %}
+{% endif %}

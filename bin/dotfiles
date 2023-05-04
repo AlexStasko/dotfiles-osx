@@ -1,0 +1,32 @@
+#!/bin/bash
+set -e
+
+# Paths
+CONFIG_DIR="$HOME/.config/dotfiles"
+DOTFILES_DIR="$HOME/.dotfiles"
+SSH_DIR="$HOME/.ssh"
+
+# Install Ansible
+if ! [ -x "$(command -v ansible)" ]; then
+  brew install ansible
+fi
+
+# Clone repository
+if ! [[ -d "$DOTFILES_DIR" ]]; then
+  git clone "https://github.com/AlexStasko/dotfiles-macos.git" "$DOTFILES_DIR"
+else
+  git -C "$DOTFILES_DIR" pull
+fi
+
+# Create path
+cd "$DOTFILES_DIR"
+
+# Update Galaxy
+ansible-galaxy install -r requirements.yml
+
+# Run playbook
+if [[ -f "$CONFIG_DIR/vault-password.txt" ]]; then
+  ansible-playbook --diff --extra-vars "@$CONFIG_DIR/values.yaml" --vault-password-file "$CONFIG_DIR/vault-password.txt" "$DOTFILES_DIR/main.yaml" "$@"
+else
+  ansible-playbook --diff --extra-vars "@$CONFIG_DIR/values.yaml" "$DOTFILES_DIR/main.yaml" "$@"
+fi

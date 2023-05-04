@@ -1,0 +1,5 @@
+---
+- name: Install
+  homebrew:
+    name: httpie
+    state: latest

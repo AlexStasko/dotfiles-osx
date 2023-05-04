@@ -1,0 +1,40 @@
+default_roles:
+  - system
+  - aws-cli
+  - bat
+  - bottom
+  - discord
+  - docker
+  - git
+  - github-cli
+  - helm
+  - httpie
+  - k9s
+  - kitty
+  - kubectl
+  - lazydocker
+  - lazygit
+  - logitech
+  - neovim
+  - nnn
+  - nodejs
+  - nvm
+  - zsh
+  - oh-my-zsh
+  - postman
+  - pyenv
+  - ripgrep
+  - rust
+  - skype
+  - slack
+  - spotify
+  - ssh
+  - teams
+  - terraform
+  - tmux
+  - 1password
+
+deb_architecture: {
+  "aarch64": "arm64",
+  "x86_64": "amd64"
+}

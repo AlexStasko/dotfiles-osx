@@ -1,0 +1,10 @@
+---
+- name: Create dir
+  file:
+    path: "{{ ansible_user_dir }}/.nvm"
+    state: directory
+
+- name: Install
+  homebrew:
+    name: nvm
+    state: latest

@@ -1,0 +1,21 @@
+---
+- name: Install
+  homebrew:
+    name: awscli
+    state: latest
+
+- name: Create folder
+  file:
+    path: "{{ ansible_user_dir }}/.aws"
+    state: directory
+
+- name: Setup Creds
+  copy:
+    dest: "{{ ansible_user_dir }}/.aws/credentials"
+    content: "{{ aws_credentials }}"
+  no_log: true
+
+- name: Setup Config
+  copy:
+    dest: "{{ ansible_user_dir }}/.aws/config"
+    content: "{{ aws_config }}"
