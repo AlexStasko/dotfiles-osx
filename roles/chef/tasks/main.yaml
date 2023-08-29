@@ -1,0 +1,6 @@
+--- 
+- name: Install
+  homebrew_cask:
+    name: chef-workstation
+    state: latest
+
