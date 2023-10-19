@@ -46,3 +46,22 @@
     name: user.name
     scope: global
     value: "{{ git_user_name }}"
+
+- name: Set gpg.format
+  community.general.git_config:
+    name: gpg.format
+    scope: global
+    value: ssh
+
+- name: Set user.signingkey
+  community.general.git_config:
+    name: user.signingkey
+    scope: global
+    value: "{{ ansible_user_dir }}/.ssh/id_rsa"
+  no_log: true
+
+- name: Set commit.gpgsign
+  community.general.git_config:
+    name: commit.gpgsign
+    scope: global
+    value: true
