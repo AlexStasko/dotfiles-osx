@@ -1,3 +1,5 @@
+#zmodload zsh/zprof
+
 # PYENV ENV
 export PYENV_ROOT="$HOME/.pyenv"
 export PYENV_PATH="$PYENV_ROOT/bin"
@@ -26,7 +28,7 @@ plugins=(git zsh-autosuggestions zsh-completions zsh-syntax-highlighting zsh-z a
 source $ZSH/oh-my-zsh.sh
 
 # DEFAULTS
-export ARCHFLAGS="-arch x86_64"
+export ARCHFLAGS="-arch arm64"
 export EDITOR='nvim'
 
 # PIP
@@ -49,11 +51,30 @@ n () {
   fi
 }
 
+export DOCS_HOME="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/second-brain"
+
+qn() {
+  pushd $DOCS_HOME
+  fileName=$(date +%Y%m%d%H%M)-${1:-quick}.md
+  touch $fileName
+  nvim $fileName
+  popd
+}
+
+sb() {
+  pushd $DOCS_HOME
+  nvim .
+  popd
+}
+
 # ALIASES
 alias cat='bat --paging=never --theme="base16"'
 alias ll='n -Hde'
 alias ssh='TERM="xterm-256color" ssh'
 alias rebase='git fetch --all --prune --prune-tags && git rebase'
+alias v='nvim'
+alias lg='lazygit'
+alias k='kubectl'
 
 # The next line sources a private environment file if it exists
 if [ -f "$HOME/.zsh_public" ]; then . "$HOME/.zsh_public"; fi
@@ -68,8 +89,6 @@ export NVM_DIR="$HOME/.nvm"
 
 complete -C 'aws_completer' aws
 
-# Chef
-eval "$(chef shell-init zsh)"
+source <(doppler completion 2> /dev/null)
 
-# 1Password
-eval "$(op completion zsh)"; compdef _op op
+#zprof
