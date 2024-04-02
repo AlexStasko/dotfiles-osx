@@ -3,8 +3,3 @@
   homebrew_cask:
     name: 1password
     state: latest
-
-- name: Install CLI
-  homebrew_cask:
-    name: 1password-cli
-    state: latest
