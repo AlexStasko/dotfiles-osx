@@ -1,1 +1,1 @@
-require 'astasko'.init()
+require("astasko.init")

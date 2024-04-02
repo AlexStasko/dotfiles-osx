@@ -1,54 +1,38 @@
-local function set_vim_g()
-  vim.g.mapleader = " "
-end
+-- Make line numbers default
+vim.opt.number = true
+-- Relative line numbers
+vim.opt.relativenumber = true
+-- Don't show the mode, since it's already in status line
+vim.o.showmode = false
+-- Sync clipboard between OS and Neovim.
+vim.o.clipboard = 'unnamedplus'
+-- Case-insensitive searching UNLESS \C or capital in search
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+-- Keep signcolumn on by default
+vim.opt.signcolumn = 'yes'
+-- Decrease update time
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
+-- Configure how new splits should be opened
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+-- Sets how neovim will display certain whitespace in the editor.
+--  See `:help 'list'`
+--  and `:help 'listchars'`
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+-- Preview substitutions live, as you type!
+vim.opt.inccommand = 'split'
+-- Show which line your cursor is on
+vim.opt.cursorline = true
+-- Minimal number of screen lines to keep above and below the cursor.
+vim.opt.scrolloff = 10
+-- Set highlight on search
+vim.opt.hlsearch = true
 
-local function set_vim_o()
-  local settings = {
-    clipboard = 'unnamedplus',
-    colorcolumn = 80,
-    expandtab = true,
-    scrolloff = 3,
-    shiftwidth = 2,
-    shortmess = vim.o.shortmess .. 'c',
-    splitright = true,
-    softtabstop = 2,
-    showmode = false,
-    tabstop = 2,
-    termguicolors = true,
-    updatetime = 300
-  }
+vim.o.colorcolumn = 80
+vim.o.shortmess = vim.o.shortmess .. 'c'
+vim.o.termguicolors = true
 
-  -- Generic vim.o
-  for k, v in pairs(settings) do
-    vim.o[k] = v
-  end
-end
-
-local function set_vim_wo()
-  vim.wo.number = true
-  vim.wo.relativenumber = true
-  vim.wo.wrap = false
-end
-
-local function set_keymaps()
-  local map = vim.api.nvim_set_keymap
-
-  local options = { noremap = false }
-
-  map('n', '<leader>h', '<CMD>wincmd h<CR>', options)
-  map('n', '<leader>j', '<CMD>wincmd j<CR>', options)
-  map('n', '<leader>k', '<CMD>wincmd k<CR>', options)
-  map('n', '<leader>l', '<CMD>wincmd l<CR>', options)
-end
-
-
-local function init()
-  set_vim_g()
-  set_vim_o()
-  set_vim_wo()
-  set_keymaps()
-end
-
-return {
-  init = init
-}
+vim.wo.wrap = false
