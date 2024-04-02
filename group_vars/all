@@ -4,7 +4,6 @@ default_roles:
   - bat
   - bottom
   - discord
-  - docker
   - git
   - github-cli
   - helm
@@ -20,7 +19,6 @@ default_roles:
   - nvm
   - zsh
   - oh-my-zsh
-  - postman
   - pyenv
   - ripgrep
   - rust
