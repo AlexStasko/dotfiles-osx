@@ -1,3 +1,10 @@
+local function getSnykToken()
+  local handle = io.popen("doppler secrets get SNYK_TOKEN --plain --config-dir ~/.doppler")
+  local result = handle:read("*a")
+  handle:close()
+  return result
+end
+
 return {
   {
     "neovim/nvim-lspconfig",
@@ -28,7 +35,6 @@ return {
           'graphql',
           'jsonls',
           'lua_ls',
-          'spectral',
           'terraformls',
           'tflint',
           'tsserver',
@@ -62,10 +68,23 @@ return {
                 activateSnykOpenSource = "true",
                 activateSnykCode = "true",
                 activateSnykIac = "true",
-                automaticAuthentication = "false",
+                automaticAuthentication = "true",
+                token = getSnykToken(),
+                enableTrustedFoldersFeature = "false",
               }
             })
-          end
+          end,
+
+          ["yamlls"] = function()
+            require("lspconfig").yamlls.setup({
+              capabilities = lsp_capabilities,
+              settings = {
+                yaml = {
+                  customTags = { "!reference sequence" }
+                }
+              }
+            })
+          end,
         },
       })
 
