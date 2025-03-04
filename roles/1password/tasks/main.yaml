@@ -1,5 +1,0 @@
----
-- name: Install App
-  homebrew_cask:
-    name: 1password
-    state: latest

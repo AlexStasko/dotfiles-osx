@@ -1,7 +1,0 @@
----
-- name: Install
-  homebrew:
-    name: 
-      - pyenv
-      - pyenv-virtualenv
-    state: latest

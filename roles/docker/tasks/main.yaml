@@ -1,5 +1,0 @@
----
-- name: Install
-  homebrew_cask:
-    name: docker
-    state: latest

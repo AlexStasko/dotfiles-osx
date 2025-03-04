@@ -1,32 +1,18 @@
-#!/bin/bash
-set -e
+#!/usr/bin/env bash
 
-# Paths
-CONFIG_DIR="$HOME/.config/dotfiles"
-DOTFILES_DIR="$HOME/.dotfiles"
-SSH_DIR="$HOME/.ssh"
-
-# Install Ansible
-if ! [ -x "$(command -v ansible)" ]; then
-  brew install ansible
+# Install Homebrew
+if ! [[ -x "$(command -v brew)" ]]; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# Clone repository
-if ! [[ -d "$DOTFILES_DIR" ]]; then
-  git clone "https://github.com/AlexStasko/dotfiles-macos.git" "$DOTFILES_DIR"
-else
-  git -C "$DOTFILES_DIR" pull
+# Install git
+if ! [[ -x "$(command -v git)" ]]; then
+  brew install git
 fi
 
-# Create path
-cd "$DOTFILES_DIR"
-
-# Update Galaxy
-ansible-galaxy install -r requirements.yml
-
-# Run playbook
-if [[ -f "$CONFIG_DIR/vault-password.txt" ]]; then
-  ansible-playbook --diff --extra-vars "@$CONFIG_DIR/values.yaml" --vault-password-file "$CONFIG_DIR/vault-password.txt" "$DOTFILES_DIR/main.yaml" "$@"
-else
-  ansible-playbook --diff --extra-vars "@$CONFIG_DIR/values.yaml" "$DOTFILES_DIR/main.yaml" "$@"
+# Install yadm
+if ! [[ -x "$(command -v yadm)" ]]; then
+  brew install yadm
 fi
+
+yadm clone "https://github.com/AlexStasko/dotfiles.git" --bootstrap
