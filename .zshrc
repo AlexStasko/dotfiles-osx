@@ -9,10 +9,18 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
+# Settings for goenv
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
+export PATH="$GOROOT/bin:$PATH"
+export PATH="$PATH:$GOPATH/bin"
+
 # oh-my-zsh plugin list
 plugins=(git aws direnv fzf kubectl nvm pyenv starship zoxide)
 
 # Env Vars
+export PATH="$(brew --prefix rustup)/bin:$PATH"
 export DOCS_HOME="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/second-brain"
 export EDITOR="nvim"
 export LANG="en_US.UTF-8"

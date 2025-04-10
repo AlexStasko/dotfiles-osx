@@ -36,6 +36,8 @@ return {
       local lspconfig = require("lspconfig")
       require("mason").setup()
       require("mason-lspconfig").setup({
+        automatic_installation = true,
+
         ensure_installed = {
           'bashls',
           'cssls',
@@ -48,12 +50,12 @@ return {
           'jsonls',
           'jsonnet_ls',
           'lua_ls',
-          'nil_ls',
+          --'nil_ls',
           'pyright',
           'rust_analyzer',
           'spectral',
           'terraformls',
-          'tsserver',
+          'ts_ls',
           'yamlls',
         },
 
@@ -120,16 +122,16 @@ return {
             }
           end,
 
-          ["nil_ls"] = function()
-            lspconfig.nil_ls.setup {
-              capabilities = lsp_capabilities,
-              settings = {
-                ['nil'] = {
-                  formatting = { command = { "alejandra" } },
-                },
-              }
-            }
-          end,
+          -- ["nil_ls"] = function()
+          --   lspconfig.nil_ls.setup {
+          --     capabilities = lsp_capabilities,
+          --     settings = {
+          --       ['nil'] = {
+          --         formatting = { command = { "alejandra" } },
+          --       },
+          --     }
+          --   }
+          -- end,
 
           ["pyright"] = function()
             lspconfig.pyright.setup {

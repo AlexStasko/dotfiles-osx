@@ -15,4 +15,4 @@ if ! [[ -x "$(command -v yadm)" ]]; then
   brew install yadm
 fi
 
-yadm clone "https://github.com/AlexStasko/dotfiles.git" --bootstrap
+yadm clone "https://github.com/AlexStasko/dotfiles-osx.git" --bootstrap

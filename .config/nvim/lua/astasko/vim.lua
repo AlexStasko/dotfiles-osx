@@ -32,7 +32,7 @@ local function init()
   -- Set highlight on search
   vim.opt.hlsearch = true
 
-  vim.o.colorcolumn = 80
+  vim.o.colorcolumn = '80'
   vim.o.shortmess = vim.o.shortmess .. 'c'
   vim.o.termguicolors = true
 
