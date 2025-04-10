@@ -1,2 +1,4 @@
 .config/1Password/ssh/agent.toml
 .config/git/config
+.aws/credentials
+.aws/config
