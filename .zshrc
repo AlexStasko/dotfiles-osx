@@ -1,6 +1,9 @@
 export XDG_CONFIG_HOME="$HOME/.config"
 export ZSH="$HOME/.oh-my-zsh"
 
+#integration with brew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Settings for nvm oh-my-zsh plugin
 NVM_HOMEBREW=$(brew --prefix nvm)
 
