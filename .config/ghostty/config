@@ -1,1 +1,8 @@
 theme = catppuccin-macchiato
+font-size = 18
+background-opacity = 0.8
+background-blur = true
+maximize = true
+macos-option-as-alt = true
+window-height = 999
+window-width = 999

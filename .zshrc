@@ -70,6 +70,10 @@ sb() {
   popd
 }
 
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZSH/oh-my-zsh.sh
+
 # Aliases
 alias -- 'cat'='bat'
 alias -- 'gh'='op plugin run -- gh'
@@ -79,7 +83,3 @@ alias -- 'lg'='lazygit'
 alias -- 'll'='n'
 alias -- 's'='doppler run --config "nixos" --project "$(whoami)"'
 alias -- 'v'='nvim'
-
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $ZSH/oh-my-zsh.sh
