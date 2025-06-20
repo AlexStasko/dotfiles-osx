@@ -1,7 +1,10 @@
 return {
   { 'numToStr/Comment.nvim', opts = {} }, -- comments
-  'lewis6991/gitsigns.nvim',              -- git signs
-  {                                       -- cmd view
+  {                                       -- git signs
+    'lewis6991/gitsigns.nvim',
+    opts = {}
+  },
+  { -- cmd view
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {

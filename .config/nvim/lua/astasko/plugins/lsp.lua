@@ -44,19 +44,20 @@ return {
           'diagnosticls',
           'dockerls',
           'eslint',
+          'gitlab_ci_ls',
           'gopls',
           'html',
           'jinja_lsp',
           'jsonls',
           'jsonnet_ls',
           'lua_ls',
-          --'nil_ls',
           'pyright',
           'rust_analyzer',
           'spectral',
           'terraformls',
           'ts_ls',
           'yamlls',
+          --'nil_ls',
         },
 
 
@@ -237,6 +238,44 @@ return {
           { name = 'path' },
           { name = 'cmdline' },
         })
+      })
+
+      -- Key bindings for diagnostics
+      local augroup = vim.api.nvim_create_augroup
+      local AStaskoGroup = augroup('AStasko', {})
+
+      local autocmd = vim.api.nvim_create_autocmd
+
+      local telescope = require('telescope.builtin')
+
+      autocmd('LspAttach', {
+        group = AStaskoGroup,
+        callback = function(e)
+          local opts = { buffer = e.buf }
+          vim.keymap.set('n', 'gd', telescope.lsp_definitions, opts)
+          vim.keymap.set('n', 'gr', telescope.lsp_references, opts)
+          vim.keymap.set('n', 'gi', telescope.lsp_implementations, opts)
+          vim.keymap.set('n', '<space>D', telescope.lsp_type_definitions, opts)
+          vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+          vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+          vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+          vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+          vim.keymap.set('n', '<space>wl', function()
+            print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+          end, opts)
+          vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+          vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
+          vim.keymap.set('n', '<space>f', function() require('conform').format() end,
+            { buffer = e.buf, desc = "Execute [f]ormatter" })
+          vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
+        end
+      })
+
+      autocmd({ "BufRead", "BufNewFile" }, {
+        pattern = "*.gitlab-ci*.{yml,yaml}",
+        callback = function()
+          vim.bo.filetype = "yaml.gitlab"
+        end,
       })
     end
   },
