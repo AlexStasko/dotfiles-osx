@@ -1,3 +1,4 @@
+cursor-style = block
 theme = catppuccin-macchiato
 font-size = 18
 background-opacity = 0.8
