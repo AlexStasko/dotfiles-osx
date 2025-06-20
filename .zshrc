@@ -70,9 +70,20 @@ sb() {
   popd
 }
 
+b() {
+  nvim ~/.config/homebrew/Brewfile
+}
+
+bu() {
+  b
+  yadm bootstrap
+}
+
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/oh-my-zsh.sh
+
+PATH="$HOMEBREW_PREFIX/opt/gawk/libexec/gnubin:$PATH"
 
 # Aliases
 alias -- 'cat'='bat'
@@ -83,3 +94,4 @@ alias -- 'lg'='lazygit'
 alias -- 'll'='n'
 alias -- 's'='doppler run --config "nixos" --project "$(whoami)"'
 alias -- 'v'='nvim'
+alias -- 'chc'='nvim ~/.config'
