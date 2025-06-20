@@ -1,2 +1,6 @@
 values.yaml
 vault-password.txt
+.config/configstore
+.config/containers
+.config/op/config
+*.tar.gz
