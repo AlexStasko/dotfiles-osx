@@ -13,7 +13,7 @@ if [ "$system_type" = "Darwin" ]; then
   fi
 
   echo "Updating homebrew bundle"
-  brew bundle --global
+  brew bundle --file "$HOME/.config/homebrew/Brewfile"
 
   if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended

@@ -85,6 +85,9 @@ source $ZSH/oh-my-zsh.sh
 
 PATH="$HOMEBREW_PREFIX/opt/gawk/libexec/gnubin:$PATH"
 
+# for cursor-cli
+export PATH="$HOME/.local/bin:$PATH"
+
 # Aliases
 alias -- 'cat'='bat'
 alias -- 'gh'='op plugin run -- gh'
@@ -95,3 +98,4 @@ alias -- 'll'='n'
 alias -- 's'='doppler run --config "nixos" --project "$(whoami)"'
 alias -- 'v'='nvim'
 alias -- 'chc'='nvim ~/.config'
+alias -- 'ai'='cursor-agent'
