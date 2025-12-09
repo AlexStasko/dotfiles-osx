@@ -1,4 +1,7 @@
 .config/1Password/ssh/agent.toml
 .config/git/config
+.config/containers/auth.json
+.kube/config
 .aws/credentials
 .aws/config
+

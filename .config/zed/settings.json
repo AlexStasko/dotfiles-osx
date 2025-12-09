@@ -1,0 +1,52 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "git_panel": {
+    "dock": "right"
+  },
+  "project_panel": {
+    "dock": "right"
+  },
+  "terminal": {
+    "dock": "left"
+  },
+  "agent": {
+    "default_profile": "write",
+    "dock": "left",
+    "always_allow_tool_actions": false,
+    "model_parameters": [],
+    "play_sound_when_agent_done": true
+  },
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "icon_theme": "Catppuccin Macchiato",
+  "telemetry": {
+    "metrics": false
+  },
+  "vim_mode": true,
+  "relative_line_numbers": true,
+  "remove_trailing_whitespace_on_save": true,
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Catppuccin Macchiato"
+  },
+  "lsp": {
+    "yaml-language-server": {
+      "settings": {
+        "yaml": {
+          "customTags": ["!reference scalar"]
+        }
+      }
+    }
+  }
+}
