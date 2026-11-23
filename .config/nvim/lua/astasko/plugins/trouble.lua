@@ -1,7 +1,7 @@
 return {
   {
     "folke/trouble.nvim",
-    dependencies = { "kyazdani42/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("trouble").setup()
       vim.api.nvim_set_keymap("n", "<leader>hh", "<cmd>Trouble<cr>",

@@ -4,9 +4,6 @@ export ZSH="$HOME/.oh-my-zsh"
 #integration with brew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Settings for nvm oh-my-zsh plugin
-NVM_HOMEBREW=$(brew --prefix nvm)
-
 # Settings for pyenv oh-my-zsh plugin
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -20,10 +17,11 @@ export PATH="$GOROOT/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
 
 # oh-my-zsh plugin list
-plugins=(git aws direnv fzf kubectl nvm pyenv starship zoxide)
+plugins=(git aws direnv fzf kubectl pyenv starship zoxide)
 
 # Env Vars
 export PATH="$(brew --prefix rustup)/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 export DOCS_HOME="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/second-brain"
 export EDITOR="nvim"
 export LANG="en_US.UTF-8"
@@ -31,6 +29,10 @@ export LC_ALL="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
 export OP_PLUGINS_SOURCED="1"
 export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+
+# codemieai
+export CODEMIE_SESSION_ANALYTICS_REPORT=0
+export CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS=1
 
 ## Custom functions
 # Run nnn
@@ -90,8 +92,6 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Aliases
 alias -- 'cat'='bat'
-alias -- 'gh'='op plugin run -- gh'
-alias -- 'glab'='op plugin run -- glab'
 alias -- 'k'='kubectl'
 alias -- 'lg'='lazygit'
 alias -- 'll'='n'
@@ -99,3 +99,21 @@ alias -- 's'='doppler run --config "nixos" --project "$(whoami)"'
 alias -- 'v'='nvim'
 alias -- 'chc'='nvim ~/.config'
 alias -- 'ai'='cursor-agent'
+alias -- 'cc'='codemie-claude --profile bb'
+alias -- 'cce'='codemie-claude --profile epam'
+alias -- 'coce'='codemie-opencode --profile epam'
+alias -- 'ccdxe'='codemie-codex --profile epam-gpt'
+
+# opencode
+export PATH=/Users/Aleksandr_Stasko/.opencode/bin:$PATH
+
+eval "$(mise activate zsh --shims)"
+
+# Added by @codemieai/code
+export PATH="/Users/Aleksandr_Stasko/.local/share/mise/installs/node/24.13.1/bin:$PATH"
+
+# Vite+ bin (https://viteplus.dev)
+. "$HOME/.vite-plus/env"
+
+# Added by @codemieai/code
+export PATH="/Users/Aleksandr_Stasko/.local/share/mise/installs/node/24.22.1/bin:$PATH"

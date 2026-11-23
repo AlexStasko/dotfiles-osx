@@ -18,7 +18,7 @@ local function init()
   require("lazy").setup("astasko.plugins", {
     change_detection = {
       notify = false,
-    }
+    },
   })
 end
 

@@ -53,7 +53,9 @@ return {
           native_lsp = {
             enabled = true,
           },
-          telescope = true,
+          telescope = {
+            enabled = true,
+          },
           treesitter = true,
           notify = true,
           noice = true,
@@ -61,9 +63,10 @@ return {
         },
         term_colors = true,
         transparent_background = true,
+        auto_integrations = true,
       })
 
-      vim.cmd.colorscheme "catppuccin"
+      vim.cmd.colorscheme "catppuccin-nvim"
     end
   },
 }

@@ -1,6 +1,7 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
+    version = '*',
     dependencies = {
       'nvim-lua/plenary.nvim',
       {
@@ -22,7 +23,8 @@ return {
           file_ignore_patterns = {
             "node_modules/.*",
             "secret.d/.*",
-            "%.pem"
+            "%.pem",
+            ".git/.*"
           },
         },
         pickers = {

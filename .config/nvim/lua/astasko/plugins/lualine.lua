@@ -18,12 +18,16 @@ end
 
 return {
   {
-    "hoob3rt/lualine.nvim",
+    "nvim-lualine/lualine.nvim",
+    dependencies = {
+      "catppuccin/nvim",
+      "nvim-tree/nvim-web-devicons"
+    },
     config = function()
       require('lualine').setup {
         options = {
           extensions = { 'fzf', 'quickfix', 'trouble', 'mason', 'lazy' },
-          theme = 'catppuccin',
+          theme = 'catppuccin-nvim',
           globalstatus = true,
         },
         sections = {
